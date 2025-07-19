@@ -1,5 +1,31 @@
 <!DOCTYPE html>
-
 <html>
-    <img src="resources/weird.jpg" alt="So weird">
+    <body>
+        <img
+            id="weird cat"
+            src="awesomes/weird.jpg"
+            style="
+                width: 500px;
+                cursor:pointer;
+            "
+        >
+
+        <!--hiiiii-->
+
+        <script>
+            let WEIRD_CAT = document.getElementById("weird cat");
+            let angle = 0;
+
+            function SpinAround() {
+                angle += 90;
+                WEIRD_CAT.style.transform = "rotate(" + angle + "deg)";
+            }
+
+            function OnClick() {
+                SpinAround();
+            }
+
+            WEIRD_CAT.onclick = OnClick;
+        </script>
+    </body>
 </html>
