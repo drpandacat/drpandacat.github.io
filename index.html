@@ -5,27 +5,40 @@
             id="weird cat"
             src="awesomes/weird.jpg"
             style="
-                width: 500px;
+                width: 100px;
                 cursor:pointer;
+                position: absolute;
             "
         >
 
         <!--hiiiii-->
 
         <script>
-            let WEIRD_CAT = document.getElementById("weird cat");
+            let weirdCat = document.getElementById("weird cat");
             let angle = 0;
+            let angularVelocity = 0;
+            let ANGLE_INCREASE = 90;
 
             function SpinAround() {
-                angle += 90;
-                WEIRD_CAT.style.transform = "rotate(" + angle + "deg)";
+                angularVelocity += 50;
             }
 
             function OnClick() {
-                SpinAround();
+                // SpinAround();
+                let weirderCat = weirdCat.cloneNode(true);
+                weirderCat.style.left = Math.random() * (window.innerWidth - 100) + "px";
+                weirderCat.style.top = Math.random() * (window.innerHeight - 100) + "px";
+                document.body.appendChild(weirderCat);
+                weirderCat.onclick = OnClick;
             }
 
-            WEIRD_CAT.onclick = OnClick;
+            setInterval(() => {
+                angularVelocity *= 0.99;
+                angle += angularVelocity;
+                weirdCat.style.transform = "rotate(" + angle + "deg)";
+            }, 2);
+
+            weirdCat.onclick = OnClick;
         </script>
     </body>
 </html>
